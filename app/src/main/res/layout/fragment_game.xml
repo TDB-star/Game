@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.GameFragment">
+    tools:context=".presentation.GameFragment"
+    tools:layout_editor_absoluteX="14dp"
+    tools:layout_editor_absoluteY="-110dp">
 
     <TextView
         android:id="@+id/textView_timer"
@@ -25,9 +27,8 @@
         android:background="@drawable/circle_background"
         app:layout_constraintBottom_toTopOf="@+id/textView_left_number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_timer"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="1" />
 
@@ -39,7 +40,6 @@
         android:background="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toTopOf="@+id/textView_option_1"
         app:layout_constraintEnd_toStartOf="@+id/textView_question"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_sum"
@@ -51,12 +51,11 @@
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_dark"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_left_number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView_left_number"
-        app:layout_constraintTop_toTopOf="@+id/textView_left_number"
-        tools:text="?" />
+        app:layout_constraintBottom_toBottomOf="@id/textView_left_number"
+        app:layout_constraintTop_toTopOf="@id/textView_left_number"
+        tools:text="@string/question_mark" />
 
     <TextView
         android:id="@+id/textView_option_1"
@@ -76,8 +75,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_orange_light"
-        app:layout_constraintBottom_toTopOf="@id/textView_option_4"
+        app:layout_constraintBottom_toTopOf="@+id/textView_option_5"
         app:layout_constraintEnd_toStartOf="@+id/textView_option_3"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView_option_1"
         tools:text="2" />
 
@@ -124,32 +124,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView_option_5"
-        app:layout_constraintStart_toEndtOf="@id/textView_option_5"
         tools:text="6" />
-
-    <TextView
-        android:id="@+id/textView_progress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/perc_of_the_right_answers"
-        app:layout_constraintBottom_toTopOf="@+id/progress_bar"
-        app:layout_constraintTop_toBottomOf="@id/textView_left_number"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:max="100"
-        android:secondaryProgressTint="@android:color/background_dark"
-        app:layout_constraintBottom_toTopOf="@id/textView_option_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_progress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
