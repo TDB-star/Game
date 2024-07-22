@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.GameResultFragment">
+
+    <ImageView
+        android:id="@+id/imageView_result"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="48dp"
+        android:contentDescription="@string/game_result_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/smile" />
+
+    <TextView
+        android:id="@+id/textView_req_correct_answers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="128dp"
+        android:text="@string/required_number_of_correct_answers"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_score"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textView_score"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/score_s"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_perc_correct_answers"
+        app:layout_constraintEnd_toEndOf="@+id/textView_req_correct_answers"
+        app:layout_constraintStart_toStartOf="@+id/textView_req_correct_answers"
+        app:layout_constraintTop_toBottomOf="@+id/textView_req_correct_answers" />
+
+    <TextView
+        android:id="@+id/textView_perc_correct_answers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/perc_of_the_right_answers"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_perc_score"
+        app:layout_constraintEnd_toEndOf="@+id/textView_req_correct_answers"
+        app:layout_constraintStart_toStartOf="@+id/textView_req_correct_answers"
+        app:layout_constraintTop_toBottomOf="@+id/textView_score" />
+
+    <TextView
+        android:id="@+id/textView_perc_score"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/right_answers_perc"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView_req_correct_answers"
+        app:layout_constraintStart_toStartOf="@+id/textView_req_correct_answers"
+        app:layout_constraintTop_toBottomOf="@+id/textView_perc_correct_answers" />
+
+
+    <Button
+        android:id="@+id/button_restart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:text="@string/button_restart"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
