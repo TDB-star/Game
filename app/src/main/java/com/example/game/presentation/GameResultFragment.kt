@@ -1,5 +1,6 @@
 package com.example.game.presentation
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -43,10 +45,16 @@ class GameResultFragment : Fragment() {
                 restartGame()
             }
         })
+
+        binding.buttonRestart.setOnClickListener {
+            restartGame()
+        }
     }
 
     private fun parsArg() {
-        gameResult = requireArguments().getSerializable(KEY_GAME_RESULT) as Result
+        requireArguments().getParcelable<Result>(KEY_GAME_RESULT)?.let {
+            gameResult = it
+        }
     }
 
     private fun restartGame() {
@@ -64,7 +72,7 @@ class GameResultFragment : Fragment() {
 
             return GameResultFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(KEY_GAME_RESULT, gameResult)
+                    putParcelable(KEY_GAME_RESULT, gameResult)
                 }
             }
         }

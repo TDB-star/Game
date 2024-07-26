@@ -6,15 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.game.R
-import com.example.game.databinding.FragmentChooseLevelBinding
 import com.example.game.databinding.FragmentGameBinding
+import com.example.game.domain.entities.GameLevel
 import com.example.game.domain.entities.GameSettings
-import com.example.game.domain.entities.Level
 import com.example.game.domain.entities.Result
 
 class GameFragment : Fragment() {
 
-    private lateinit var level: Level
+    private lateinit var level: GameLevel
     private var _binding: FragmentGameBinding? = null
     private val binding: FragmentGameBinding
         get() = _binding ?: throw RuntimeException("FragmentGameBinding == null")
@@ -60,7 +59,9 @@ class GameFragment : Fragment() {
     }
 
     private fun parsArgs() {
-        level = requireArguments().getSerializable(KEY_LEVEL) as Level
+       requireArguments().getParcelable<GameLevel>(KEY_LEVEL)?.let {
+           level = it
+       }
     }
 
     companion object {
@@ -68,10 +69,10 @@ class GameFragment : Fragment() {
         const val NAME = "gameFragment"
         private const val KEY_LEVEL = "level"
 
-        fun newInstance(level: Level) : GameFragment {
+        fun newInstance(level: GameLevel) : GameFragment {
             return GameFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(KEY_LEVEL, level)
+                    putParcelable(KEY_LEVEL, level)
                 }
             }
         }
