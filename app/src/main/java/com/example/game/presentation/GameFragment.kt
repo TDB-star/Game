@@ -9,7 +9,7 @@ import com.example.game.R
 import com.example.game.databinding.FragmentGameBinding
 import com.example.game.domain.entities.GameLevel
 import com.example.game.domain.entities.GameSettings
-import com.example.game.domain.entities.Result
+import com.example.game.domain.entities.GameResult
 
 class GameFragment : Fragment() {
 
@@ -36,7 +36,7 @@ class GameFragment : Fragment() {
 
         binding.textViewOption1.setOnClickListener {
             launchGameResultFragment(
-                Result(
+                GameResult(
                 true,
                 0,
                 0,
@@ -50,7 +50,7 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun launchGameResultFragment(gameResult: Result) {
+    private fun launchGameResultFragment(gameResult: GameResult) {
 
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, GameResultFragment.newInstance(gameResult))
