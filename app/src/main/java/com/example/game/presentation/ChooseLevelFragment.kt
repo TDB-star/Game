@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.game.R
 import com.example.game.databinding.FragmentChooseLevelBinding
+import com.example.game.domain.entities.Level
 
 class ChooseLevelFragment : Fragment() {
 
@@ -22,7 +23,38 @@ class ChooseLevelFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonTestLevel.setOnClickListener {
+            launchGameFragment(Level.TEST)
+        }
+
+        binding.buttonEasyLevel.setOnClickListener {
+            launchGameFragment(Level.EASY)
+        }
+
+        binding.buttonHardLevel.setOnClickListener {
+            launchGameFragment(Level.HARD)
+        }
+
+        binding.buttonMiddleLevel.setOnClickListener {
+            launchGameFragment(Level.NORMAL)
+        }
+    }
+
+    private fun launchGameFragment(level: Level) {
+
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, GameFragment.newInstance(level))
+            .addToBackStack(GameFragment.NAME)
+            .commit()
+    }
+
     companion object {
+
+        const val name = "chooseLevelFragment"
+
         fun newInstance(): ChooseLevelFragment {
             return ChooseLevelFragment()
         }

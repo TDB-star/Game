@@ -51,11 +51,11 @@
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_dark"
+        android:text="@string/question_mark"
+        app:layout_constraintBottom_toBottomOf="@id/textView_left_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView_left_number"
-        app:layout_constraintBottom_toBottomOf="@id/textView_left_number"
-        app:layout_constraintTop_toTopOf="@id/textView_left_number"
-        tools:text="@string/question_mark" />
+        app:layout_constraintTop_toTopOf="@id/textView_left_number" />
 
     <TextView
         android:id="@+id/textView_option_1"
