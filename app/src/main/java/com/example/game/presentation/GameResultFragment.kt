@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
 import com.example.game.R
 import com.example.game.databinding.FragmentGameResultBinding
 import com.example.game.domain.entities.GameResult
@@ -37,12 +38,6 @@ class GameResultFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        val callBack = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                restartGame()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callBack)
         binding.buttonRestart.setOnClickListener {
             restartGame()
         }
@@ -97,15 +92,11 @@ class GameResultFragment : Fragment() {
     }
 
     private fun restartGame() {
-        requireActivity().supportFragmentManager
-            .popBackStack(
-                GameFragment.NAME,
-                FragmentManager.POP_BACK_STACK_INCLUSIVE
-            )
+        findNavController().popBackStack()
     }
 
     companion object {
-        private const val KEY_GAME_RESULT = "game_result"
+        const val KEY_GAME_RESULT = "game_result"
 
         fun newInstance(gameResult: GameResult): GameResultFragment {
 
