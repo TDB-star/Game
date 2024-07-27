@@ -20,4 +20,6 @@
     <string name="perc_of_the_right_answers">Correct answers %s (min %s)</string>
     <string name="button_restart">RESTART</string>
     <string name="question_mark">\?</string>
+    <string name="required_percentage_of_correct_answers_s">Required percentage of correct answers: %s</string>
+    <string name="percentage_of_right_answers_s">Percentage of right answers: %s</string>
 </resources>
