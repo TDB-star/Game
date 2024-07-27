@@ -35,26 +35,26 @@ object RepositoryImplementation: Repository {
                     10,
                     3,
                     50,
-                    8)
+                    10)
             }
             GameLevel.EASY -> {
                 GameSettings(
                     10,
-                    10,
-                    70,
-                    60)
+                    5,
+                    50,
+                    20)
             }
             GameLevel.NORMAL -> {
                 GameSettings(
                     20,
-                    20,
-                    80,
-                    40)
+                    10,
+                    30,
+                    30)
             }
             GameLevel.HARD -> {
                 GameSettings(
                     100,
-                    90,
+                    20,
                     90,
                     40)
             }
