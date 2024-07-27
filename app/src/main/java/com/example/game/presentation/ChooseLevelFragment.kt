@@ -53,7 +53,7 @@ class ChooseLevelFragment : Fragment() {
 
     companion object {
 
-        const val name = "chooseLevelFragment"
+        const val NAME = "chooseLevelFragment"
 
         fun newInstance(): ChooseLevelFragment {
             return ChooseLevelFragment()
