@@ -21,8 +21,9 @@ class GameFragment : Fragment() {
     private val viewModel by lazy {
         ViewModelProvider(
             this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(
-                    requireActivity().application))[GameViewModel::class.java]
+            GameViewModelFactory(level, requireActivity().application
+            )
+        )[GameViewModel::class.java]
     }
 
     private val textViewOptions by lazy {
@@ -58,7 +59,6 @@ class GameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         setClickListenersToOptions()
-        viewModel.startGame(level)
     }
 
     private fun launchGameResultFragment(gameResult: GameResult) {
