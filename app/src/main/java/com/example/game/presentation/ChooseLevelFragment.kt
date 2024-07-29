@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.game.R
 import com.example.game.databinding.FragmentChooseLevelBinding
 import com.example.game.domain.entities.GameLevel
-import com.example.game.presentation.GameFragment.Companion.KEY_LEVEL
 
 class ChooseLevelFragment : Fragment() {
 
@@ -46,19 +44,9 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun launchGameFragment(level: GameLevel) {
-        val args = Bundle().apply {
-            putParcelable(KEY_LEVEL, level)
-        }
-        findNavController().navigate(R.id.action_chooseLevelFragment_to_gameFragment, args)
-    }
-
-    companion object {
-
-        const val NAME = "chooseLevelFragment"
-
-        fun newInstance(): ChooseLevelFragment {
-            return ChooseLevelFragment()
-        }
+        findNavController().navigate(
+            ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level)
+        )
     }
 
     override fun onDestroyView() {
