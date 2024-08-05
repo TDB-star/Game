@@ -56,6 +56,8 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         observeViewModel()
         setClickListenersToOptions()
     }
@@ -68,51 +70,9 @@ class GameFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.question.observe(viewLifecycleOwner) {
-            binding.textViewSum.text = it.sum.toString()
-            binding.textViewLeftNumber.text = it.visibleNumber.toString()
-            for (i in 0 until textViewOptions.size) {
-                textViewOptions[i].text = it.options[i].toString()
-            }
-        }
-
-        viewModel.percentOfRightAnswers.observe(viewLifecycleOwner) {
-            binding.progressBar.setProgress(it, true)
-        }
-
-        viewModel.enoughCount.observe(viewLifecycleOwner) {
-            binding.textViewProgress.setTextColor(getColorByState(it))
-        }
-
-        viewModel.enoughPercent.observe(viewLifecycleOwner) {
-            val color = getColorByState(it)
-            binding.progressBar.progressTintList = ColorStateList.valueOf(color)
-        }
-
-        viewModel.formattedTime.observe(viewLifecycleOwner) {
-            binding.textViewTimer.text = it
-        }
-
-        viewModel.minPercent.observe(viewLifecycleOwner) {
-            binding.progressBar.secondaryProgress = it
-        }
-
         viewModel.gameResult.observe(viewLifecycleOwner) {
             launchGameResultFragment(it)
         }
-
-        viewModel.progressAnswers.observe(viewLifecycleOwner) {
-            binding.textViewProgress.text = it
-        }
-    }
-
-    private fun getColorByState(state: Boolean) : Int {
-        val colorResId = if (state) {
-            android.R.color.holo_green_light
-        } else {
-            android.R.color.holo_red_light
-        }
-        return ContextCompat.getColor(requireContext(), colorResId)
     }
 
     private fun setClickListenersToOptions() {
