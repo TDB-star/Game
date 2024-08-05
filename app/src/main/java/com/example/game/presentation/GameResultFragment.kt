@@ -40,45 +40,7 @@ class GameResultFragment : Fragment() {
     }
 
     private fun bindViews() {
-
-        with(binding) {
-            imageViewResult.setImageResource(getSmileResId())
-            textViewReqCorrectAnswers.text = String.format(
-                getString(R.string.required_number_of_correct_answers),
-                args.gameResult.gameSettings.minCountOfRightAnswers
-            )
-
-            textViewScore.text = String.format(
-                getString(R.string.score_s),
-                args.gameResult.countRightAnswers
-            )
-
-            textViewPercCorrectAnswers.text = String.format(
-                getString(R.string.required_percentage_of_correct_answers_s),
-                args.gameResult.gameSettings.minPercentOfRightAnswers
-            )
-
-            textViewPercScore.text = String.format(
-               getString(R.string.percentage_of_right_answers_s),
-                getPercRightAnswers()
-            )
-        }
-    }
-
-    private fun getPercRightAnswers() = with(args.gameResult) {
-        if (countQuestions == 0) {
-            0
-        } else {
-            ((countRightAnswers / countQuestions.toDouble()) * 100).toInt()
-        }
-    }
-
-    private fun getSmileResId() : Int {
-        return if (args.gameResult.winner) {
-            R.drawable.smile
-        } else {
-            R.drawable.triste
-        }
+        binding.gameResult = args.gameResult
     }
 
     private fun restartGame() {

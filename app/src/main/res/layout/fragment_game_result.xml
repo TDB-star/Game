@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="gameResult"
+            type="com.example.game.domain.entities.GameResult" />
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,6 +20,7 @@
         android:layout_height="150dp"
         android:layout_margin="48dp"
         android:contentDescription="@string/game_result_image"
+        app:resultImage="@{gameResult.winner}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,43 +32,47 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_marginEnd="128dp"
-        android:text="@string/required_number_of_correct_answers"
+        app:requiredAnswers="@{gameResult.gameSettings.minCountOfRightAnswers}"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView_score"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@string/required_number_of_correct_answers"/>
 
     <TextView
         android:id="@+id/textView_score"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/score_s"
+        app:score="@{gameResult.countRightAnswers}"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView_perc_correct_answers"
         app:layout_constraintEnd_toEndOf="@+id/textView_req_correct_answers"
         app:layout_constraintStart_toStartOf="@+id/textView_req_correct_answers"
-        app:layout_constraintTop_toBottomOf="@+id/textView_req_correct_answers" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_req_correct_answers"
+        tools:text="@string/score_s"/>
 
     <TextView
         android:id="@+id/textView_perc_correct_answers"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/required_percentage_of_correct_answers_s"
+        app:percCorrectAnswers="@{gameResult.gameSettings.minPercentOfRightAnswers}"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView_perc_score"
         app:layout_constraintEnd_toEndOf="@+id/textView_req_correct_answers"
         app:layout_constraintStart_toStartOf="@+id/textView_req_correct_answers"
-        app:layout_constraintTop_toBottomOf="@+id/textView_score" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_score"
+        tools:text="@string/percentage_of_right_answers_s"/>
 
     <TextView
         android:id="@+id/textView_perc_score"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/percentage_of_right_answers_s"
+        tools:text="@string/percentage_of_right_answers_s"
+        app:percScore="@{gameResult}"
         android:textAlignment="textStart"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,3 +93,4 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

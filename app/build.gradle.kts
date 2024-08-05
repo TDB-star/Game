@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    kotlin("kapt")
+
 }
 
 android {
@@ -39,7 +41,7 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -52,7 +54,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 }
